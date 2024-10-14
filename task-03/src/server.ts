@@ -5,6 +5,7 @@ import connectDB from "./config";
 import cookieParser from "cookie-parser";
 import allRoutes from "./routes";
 import { paths } from "./routes/path";
+import serverless from 'serverless-http';
 import interviewReminderCron from "./uitls/jobs";
 import morgan from "morgan"
 
@@ -29,4 +30,5 @@ app.listen(PORT, () => {
 });
 
 
-export default app;
+module.exports = app;
+module.exports.handler = serverless(app);
